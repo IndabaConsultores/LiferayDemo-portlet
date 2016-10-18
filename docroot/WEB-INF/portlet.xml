@@ -8,6 +8,10 @@
 			com.traintium.sample1.Sample1Portlet
 		</portlet-class>
 		<init-param>
+		    <name>copy-request-parameters</name>
+		    <value>true</value>
+		</init-param>
+		<init-param>
 			<name>view-template</name>
 			<value>/html/sample1/view.jsp</value>
 		</init-param>
@@ -24,6 +28,39 @@
 		<portlet-info>
 			<title>Sample1</title>
 			<short-title>Sample1</short-title>
+			<keywords></keywords>
+		</portlet-info>
+		<security-role-ref>
+			<role-name>administrator</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>guest</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>power-user</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>user</role-name>
+		</security-role-ref>
+	</portlet>
+	<portlet>
+		<portlet-name>sample2</portlet-name>
+		<display-name>Sample2</display-name>
+		<portlet-class>
+			com.traintium.sample2.Sample2Portlet
+		</portlet-class>
+		<init-param>
+			<name>view-template</name>
+			<value>/html/sample2/view.jsp</value>
+		</init-param>
+		<expiration-cache>0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<portlet-info>
+			<title>Sample2</title>
+			<short-title>Sample2</short-title>
 			<keywords></keywords>
 		</portlet-info>
 		<security-role-ref>

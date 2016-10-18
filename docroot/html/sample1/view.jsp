@@ -6,8 +6,10 @@ String saludo = portletPreferences.getValue("saludo", "Hola ");
 %>
 
 <liferay-ui:message key="texto-info-saluda"></liferay-ui:message>
+
+<portlet:actionURL name="actionSaludo" var="actionSaludoURL"></portlet:actionURL>
 <liferay-portlet:renderURL var="renderURL"/>
-<aui:form action="<%=renderURL%>" method="post" name="name">
+<aui:form action="<%=actionSaludoURL%>" method="post" name="name">
 
 <aui:input name="nombre" label="nombre"/>
 
