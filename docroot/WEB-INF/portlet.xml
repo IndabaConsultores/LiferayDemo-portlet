@@ -20,6 +20,7 @@
 			<mime-type>text/html</mime-type>
 			<portlet-mode>view</portlet-mode>
 		</supports>
+		<resource-bundle>content.language</resource-bundle>
 		<portlet-info>
 			<title>Sample1</title>
 			<short-title>Sample1</short-title>

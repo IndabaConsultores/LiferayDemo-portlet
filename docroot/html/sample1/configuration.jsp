@@ -6,10 +6,10 @@
 String saludo = portletPreferences.getValue("saludo", "Hola ");
 %>
 
-<aui:form action="<%= configurationURL %>" method="post" name="fm">
+<aui:form action="<%= configurationURL%>" method="post" name="fm">
     <aui:input name="<%= Constants.CMD %>" type="hidden" value="<%= Constants.UPDATE %>" />
 
-    <aui:input name="preferences--saludo--" type="text" value="<%= saludo %>" />
+    <aui:input name="preferences--saludo--" type="text" value="<%= saludo %>" label="pref-saludo"/>
 
     <aui:button-row>
        <aui:button type="submit" />
