@@ -14,10 +14,17 @@ String saludo = portletPreferences.getValue("saludo", "Hola ");
 <portlet:actionURL name="actionSaludo" var="actionSaludoURL">
 </portlet:actionURL>
 <liferay-portlet:renderURL var="renderURL"/>
-<aui:form action="<%=actionSaludoURL%>" method="post" name="name">
+<aui:form action="<%=actionSaludoURL%>" method="post" name="name" >
 
-<aui:input name="nombre" label="nombre"/>
+<aui:input name="nombre" label="nombre">
+	<aui:validator name="required" errorMessage="Please enter your name." />
+</aui:input>
 <aui:input name="num" label="num"/>
+
+<aui:input name="email" label="email">
+	<aui:validator name="email" />
+    <aui:validator name="required"/>
+</aui:input>
 
 <aui:button-row>
 	<aui:button type="submit" value="saluda"></aui:button>
@@ -27,3 +34,4 @@ String saludo = portletPreferences.getValue("saludo", "Hola ");
 <%if(!StringUtils.isEmpty(nombre)){ %>
 <%=saludo %> <%=nombre%>!
 <%} %>
+
