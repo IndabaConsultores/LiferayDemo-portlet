@@ -5,5 +5,6 @@
 	<category name="category.sample">
 		<portlet id="sample1"></portlet>
 		<portlet id="sample2"></portlet>
+		<portlet id="books"></portlet>
 	</category>
 </display>
