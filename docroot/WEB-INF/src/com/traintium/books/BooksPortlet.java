@@ -33,14 +33,16 @@ public class BooksPortlet extends MVCPortlet {
 	@Override
 	public void doView(RenderRequest renderRequest, RenderResponse renderResponse)
 			throws IOException, PortletException {
-
+		ThemeDisplay themeDisplay = (ThemeDisplay) renderRequest.getAttribute(WebKeys.THEME_DISPLAY);
 		int cur = ParamUtil.getInteger(renderRequest, "cur", 1);
 		int delta = ParamUtil.getInteger(renderRequest, "delta", Constants.DEFAULT_DELTA);
 
 		try {
-			List<Book> books = BookLocalServiceUtil.getBooks((cur - 1) * delta, cur * delta);
+			List<Book> books = BookLocalServiceUtil.getBooksByGroupId(themeDisplay.getScopeGroupId(), (cur - 1) * delta,
+					cur * delta);
 			renderRequest.setAttribute("books", books);
-			renderRequest.setAttribute("booksCount", BookLocalServiceUtil.getBooksCount());
+			renderRequest.setAttribute("booksCount",
+					BookLocalServiceUtil.countBooksByGroupId(themeDisplay.getScopeGroupId()));
 
 		} catch (SystemException e) {
 

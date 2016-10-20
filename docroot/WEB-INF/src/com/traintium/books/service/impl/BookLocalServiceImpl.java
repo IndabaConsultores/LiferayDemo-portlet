@@ -14,6 +14,10 @@
 
 package com.traintium.books.service.impl;
 
+import java.util.List;
+
+import com.liferay.portal.kernel.exception.SystemException;
+import com.traintium.books.model.Book;
 import com.traintium.books.service.base.BookLocalServiceBaseImpl;
 
 /**
@@ -36,4 +40,11 @@ public class BookLocalServiceImpl extends BookLocalServiceBaseImpl {
 	 *
 	 * Never reference this interface directly. Always use {@link com.traintium.books.service.BookLocalServiceUtil} to access the book local service.
 	 */
+	public List<Book> getBooksByGroupId(long groupId, int start, int end) throws SystemException{
+		return bookPersistence.findByGroupId(groupId, start, end);
+	}
+	
+	public long countBooksByGroupId(long groupId) throws SystemException{
+		return bookPersistence.countByGroupId(groupId);
+	}
 }
