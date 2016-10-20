@@ -1,5 +1,3 @@
-<%@page import="com.traintium.books.model.Book"%>
-<%@page import="java.util.List"%>
 <%@include file="/html/init.jsp" %>
 
 <liferay-portlet:actionURL var="saveBookURL" name="saveBook"></liferay-portlet:actionURL>
@@ -24,9 +22,11 @@
 
 <%
 List<Book> books = (List<Book>)renderRequest.getAttribute("books");
+int booksCount = (Integer)renderRequest.getAttribute("booksCount");
+int delta = (Integer)ParamUtil.getInteger(renderRequest, "delta", com.traintium.books.Constants.DEFAULT_DELTA);
 %>
 
-<liferay-ui:search-container delta="5" emptyResultsMessage="no-books-were-found" total="<%=books.size() %>">
+<liferay-ui:search-container delta="<%=delta%>" emptyResultsMessage="no-books-were-found" total="<%=booksCount %>">
 	<liferay-ui:search-container-results
 		results="<%=books%>"/>
 		
