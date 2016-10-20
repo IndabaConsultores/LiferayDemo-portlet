@@ -13,6 +13,7 @@ import javax.portlet.RenderResponse;
 import org.apache.commons.lang.StringUtils;
 
 import com.liferay.counter.service.CounterLocalServiceUtil;
+import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
@@ -34,22 +35,36 @@ public class BooksPortlet extends MVCPortlet {
 	public void doView(RenderRequest renderRequest, RenderResponse renderResponse)
 			throws IOException, PortletException {
 		ThemeDisplay themeDisplay = (ThemeDisplay) renderRequest.getAttribute(WebKeys.THEME_DISPLAY);
-		int cur = ParamUtil.getInteger(renderRequest, "cur", 1);
-		int delta = ParamUtil.getInteger(renderRequest, "delta", Constants.DEFAULT_DELTA);
-
-		try {
-			List<Book> books = BookLocalServiceUtil.getBooksByGroupId(themeDisplay.getScopeGroupId(), (cur - 1) * delta,
-					cur * delta);
-			renderRequest.setAttribute("books", books);
-			renderRequest.setAttribute("booksCount",
-					BookLocalServiceUtil.countBooksByGroupId(themeDisplay.getScopeGroupId()));
-
-		} catch (SystemException e) {
-
-			e.printStackTrace();
+		String viewName = ParamUtil.get(renderRequest, "viewName", "");
+		
+		if(viewName.equals("/html/books/detail.jsp")){
+			long bookId = ParamUtil.getLong(renderRequest, "bookId", 0);
+			_log.debug("obteniendo book " + bookId);
+			try {
+				renderRequest.setAttribute("book", BookLocalServiceUtil.getBook(bookId));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			include(viewName, renderRequest, renderResponse);
 		}
-
-		super.doView(renderRequest, renderResponse);
+		else{
+			int cur = ParamUtil.getInteger(renderRequest, "cur", 1);
+			int delta = ParamUtil.getInteger(renderRequest, "delta", Constants.DEFAULT_DELTA);
+	
+			try {
+				List<Book> books = BookLocalServiceUtil.getBooksByGroupId(themeDisplay.getScopeGroupId(), (cur - 1) * delta,
+						cur * delta);
+				renderRequest.setAttribute("books", books);
+				renderRequest.setAttribute("booksCount",
+						BookLocalServiceUtil.countBooksByGroupId(themeDisplay.getScopeGroupId()));
+	
+			} catch (SystemException e) {
+	
+				e.printStackTrace();
+			}
+			super.doView(renderRequest, renderResponse);
+		}
 	}
 
 	public void saveBook(ActionRequest actionRequest, ActionResponse actionResponse) throws SystemException {

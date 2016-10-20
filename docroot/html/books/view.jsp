@@ -22,11 +22,11 @@
 
 <%
 List<Book> books = (List<Book>)renderRequest.getAttribute("books");
-int booksCount = (Integer)renderRequest.getAttribute("booksCount");
+Long booksCount = (Long)renderRequest.getAttribute("booksCount");
 int delta = (Integer)ParamUtil.getInteger(renderRequest, "delta", com.traintium.books.Constants.DEFAULT_DELTA);
 %>
 
-<liferay-ui:search-container delta="<%=delta%>" emptyResultsMessage="no-books-were-found" total="<%=booksCount %>">
+<liferay-ui:search-container delta="<%=delta%>" emptyResultsMessage="no-books-were-found" total="<%=booksCount.intValue() %>">
 	<liferay-ui:search-container-results
 		results="<%=books%>"/>
 		
@@ -44,6 +44,14 @@ int delta = (Integer)ParamUtil.getInteger(renderRequest, "delta", com.traintium.
 			<liferay-ui:search-container-column-text
 				name="año"
 				value="<%= String.valueOf(book.getAnio()) %>"/>
+				
+			<liferay-ui:search-container-column-text>
+				<portlet:renderURL var="bookDetailURL">
+					<portlet:param name="viewName" value="/html/books/detail.jsp"/>
+					<portlet:param name="bookId" value="<%=String.valueOf(book.getBookId()) %>"/>
+				</portlet:renderURL>
+				<aui:a href="<%=bookDetailURL %>">detail</aui:a>
+			</liferay-ui:search-container-column-text>
 
 			
 		</liferay-ui:search-container-row>
