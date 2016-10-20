@@ -1,9 +1,14 @@
 package com.traintium.books;
 
+import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
+import javax.portlet.PortletException;
+import javax.portlet.RenderRequest;
+import javax.portlet.RenderResponse;
 
 import org.apache.commons.lang.StringUtils;
 
@@ -25,6 +30,20 @@ import com.traintium.books.service.BookLocalServiceUtil;
  */
 public class BooksPortlet extends MVCPortlet {
  
+	@Override
+	public void doView(RenderRequest renderRequest, RenderResponse renderResponse)
+			throws IOException, PortletException {
+		
+		try {
+			List<Book> books = BookLocalServiceUtil.getBooks(-1, -1);
+			renderRequest.setAttribute("books", books);
+		} catch (SystemException e) {
+			
+			e.printStackTrace();
+		}
+		
+		super.doView(renderRequest, renderResponse);
+	}
 
 	public void saveBook(ActionRequest actionRequest, ActionResponse actionResponse) throws SystemException{
 		
