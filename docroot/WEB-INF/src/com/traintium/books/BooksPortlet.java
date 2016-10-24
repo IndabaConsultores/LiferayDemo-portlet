@@ -41,7 +41,9 @@ public class BooksPortlet extends MVCPortlet {
 			long bookId = ParamUtil.getLong(renderRequest, "bookId", 0);
 			_log.debug("obteniendo book " + bookId);
 			try {
-				renderRequest.setAttribute("book", BookLocalServiceUtil.getBook(bookId));
+				if(bookId!=0){
+					renderRequest.setAttribute("book", BookLocalServiceUtil.getBook(bookId));
+				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -67,10 +69,12 @@ public class BooksPortlet extends MVCPortlet {
 		}
 	}
 
-	public void saveBook(ActionRequest actionRequest, ActionResponse actionResponse) throws SystemException {
+	public void saveBook(ActionRequest actionRequest, ActionResponse actionResponse) throws SystemException, PortalException {
 
 		ThemeDisplay themeDisplay = (ThemeDisplay) actionRequest.getAttribute(WebKeys.THEME_DISPLAY);
 
+		long bookId = ParamUtil.getLong(actionRequest, "bookId", 0);
+		
 		String nombre = ParamUtil.getString(actionRequest, "nombre");
 		String autor = ParamUtil.getString(actionRequest, "autor");
 		int anio = ParamUtil.getInteger(actionRequest, "anio", 0);
@@ -90,18 +94,26 @@ public class BooksPortlet extends MVCPortlet {
 			PortalUtil.copyRequestParameters(actionRequest, actionResponse);
 			return;
 		}
-
-		Book book = BookLocalServiceUtil.createBook(CounterLocalServiceUtil.increment());
+		
+		Book book = null;
+		if(bookId==0){
+			book = BookLocalServiceUtil.createBook(CounterLocalServiceUtil.increment());
+			book.setCreateDate(new Date());
+			book.setGroupId(themeDisplay.getScopeGroupId());
+			book.setCompanyId(themeDisplay.getCompanyId());
+			book.setUserId(themeDisplay.getUserId());
+		}
+		else{
+			book = BookLocalServiceUtil.getBook(bookId);
+		}
+		
 		book.setNombre(nombre);
 		book.setAutor(autor);
 		book.setAnio(anio);
-		book.setGroupId(themeDisplay.getScopeGroupId());
-		book.setCompanyId(themeDisplay.getCompanyId());
-		book.setUserId(themeDisplay.getUserId());
-		book.setCreateDate(new Date());
+		
 		book.setModifiedDate(new Date());
 
-		BookLocalServiceUtil.addBook(book);
+		BookLocalServiceUtil.updateBook(book);
 
 	}
 

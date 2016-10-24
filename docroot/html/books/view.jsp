@@ -1,25 +1,5 @@
 <%@include file="/html/init.jsp" %>
 
-<liferay-portlet:actionURL var="saveBookURL" name="saveBook"></liferay-portlet:actionURL>
-<aui:form action="<%=saveBookURL%>" method="POST">
-	
-	<aui:fieldset>
-		<aui:input name="nombre">
-			<aui:validator name="required"/>
-		</aui:input>
-		<aui:input name="autor">
-			<aui:validator name="required"/>
-		</aui:input>
-		<aui:input name="anio">
-			<aui:validator name="required"/>
-		</aui:input>
-	</aui:fieldset>
-	
-	<aui:button-row>
-		<aui:button type="submit"></aui:button>
-	</aui:button-row>
-</aui:form>
-
 <%
 List<Book> books = (List<Book>)renderRequest.getAttribute("books");
 Long booksCount = (Long)renderRequest.getAttribute("booksCount");
@@ -59,3 +39,11 @@ int delta = (Integer)ParamUtil.getInteger(renderRequest, "delta", com.traintium.
 
 	<liferay-ui:search-iterator />
 </liferay-ui:search-container>
+
+
+<portlet:renderURL var="detailURL">
+	<portlet:param name="viewName" value="/html/books/detail.jsp"/>
+</portlet:renderURL>
+<aui:button-row>
+	<aui:button type="submit" href="<%=detailURL%>" value="add"></aui:button>
+</aui:button-row>
