@@ -12,6 +12,8 @@
 <%@page import="com.liferay.portlet.PortletURLUtil"%>
 <%@page import="com.traintium.books.model.Book"%>
 <%@page import="com.traintium.books.service.BookLocalServiceUtil"%>
+<%@page import="com.liferay.portal.kernel.util.WebKeys"%>
+<%@page import="com.liferay.portal.kernel.dao.search.ResultRow"%>
 
 
 <portlet:defineObjects />

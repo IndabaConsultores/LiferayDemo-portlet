@@ -116,6 +116,17 @@ public class BooksPortlet extends MVCPortlet {
 		BookLocalServiceUtil.updateBook(book);
 
 	}
+	
+	public void deleteBook(ActionRequest actionRequest, ActionResponse actionResponse) throws SystemException, PortalException {
+
+		long bookId = ParamUtil.getLong(actionRequest, "bookId", 0);
+		
+		if(bookId!=0){
+			BookLocalServiceUtil.deleteBook(bookId);
+		}
+	}
+	
+	
 
 	Log _log = LogFactoryUtil.getLog(this.getClass());
 }

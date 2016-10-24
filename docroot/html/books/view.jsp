@@ -25,13 +25,8 @@ int delta = (Integer)ParamUtil.getInteger(renderRequest, "delta", com.traintium.
 				name="año"
 				value="<%= String.valueOf(book.getAnio()) %>"/>
 				
-			<liferay-ui:search-container-column-text>
-				<portlet:renderURL var="bookDetailURL">
-					<portlet:param name="viewName" value="/html/books/detail.jsp"/>
-					<portlet:param name="bookId" value="<%=String.valueOf(book.getBookId()) %>"/>
-				</portlet:renderURL>
-				<aui:a href="<%=bookDetailURL %>">detail</aui:a>
-			</liferay-ui:search-container-column-text>
+			<liferay-ui:search-container-column-jsp name="Actions"
+				path="/html/books/bookAction.jsp" /> 
 
 			
 		</liferay-ui:search-container-row>
