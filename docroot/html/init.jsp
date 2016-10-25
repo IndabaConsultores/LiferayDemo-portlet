@@ -14,6 +14,7 @@
 <%@page import="com.traintium.books.service.BookLocalServiceUtil"%>
 <%@page import="com.liferay.portal.kernel.util.WebKeys"%>
 <%@page import="com.liferay.portal.kernel.dao.search.ResultRow"%>
+<%@page import="com.traintium.books.model.Chapter"%>
 
 
 <portlet:defineObjects />

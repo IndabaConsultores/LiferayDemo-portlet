@@ -5,9 +5,8 @@ Book book = (Book)renderRequest.getAttribute("book");
 if(book==null){
 	book = BookLocalServiceUtil.createBook(0);
 }
+List<Chapter> chapters = (List<Chapter>)renderRequest.getAttribute("chapters");
 %>
-
-<h1><%=book.getNombre() %></h1>
 
 <liferay-portlet:actionURL var="saveBookURL" name="saveBook"></liferay-portlet:actionURL>
 <aui:form action="<%=saveBookURL%>" method="POST">
@@ -28,3 +27,39 @@ if(book==null){
 		<aui:button type="submit"></aui:button>
 	</aui:button-row>
 </aui:form>
+
+<%if(book.getBookId()!=0){%>
+<liferay-ui:search-container delta="-1" emptyResultsMessage="no-chaps-were-found" total="<%=chapters.size()%>">
+	<liferay-ui:search-container-results
+		results="<%=chapters%>"/>
+		
+		<liferay-ui:search-container-row
+			className="com.traintium.books.model.Chapter"
+			keyProperty="chapterId"
+			modelVar="chapter">
+			
+			<liferay-ui:search-container-column-text
+				name="numero"
+				value="<%= String.valueOf( chapter.getNumero() )%>"/>
+			<liferay-ui:search-container-column-text
+				name="name"
+				value="<%= chapter.getNombre() %>"/>
+				
+			<liferay-ui:search-container-column-jsp name="Actions"
+				path="/html/books/chapterAction.jsp" /> 
+
+			
+		</liferay-ui:search-container-row>
+		
+
+	<liferay-ui:search-iterator />
+</liferay-ui:search-container>
+
+<portlet:renderURL var="chapDetailURL">
+	<portlet:param name="viewName" value="/html/books/chapterDetail.jsp"/>
+	<portlet:param name="bookId" value="<%=String.valueOf(book.getBookId()) %>"/>
+</portlet:renderURL>
+<aui:button-row>
+	<aui:button type="submit" href="<%=chapDetailURL%>" value="add chapter"></aui:button>
+</aui:button-row>
+<%}%>

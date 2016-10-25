@@ -24,7 +24,9 @@ import com.liferay.portal.theme.ThemeDisplay;
 import com.liferay.portal.util.PortalUtil;
 import com.liferay.util.bridges.mvc.MVCPortlet;
 import com.traintium.books.model.Book;
+import com.traintium.books.model.Chapter;
 import com.traintium.books.service.BookLocalServiceUtil;
+import com.traintium.books.service.ChapterLocalServiceUtil;
 
 /**
  * Portlet implementation class BooksPortlet
@@ -43,11 +45,16 @@ public class BooksPortlet extends MVCPortlet {
 			try {
 				if(bookId!=0){
 					renderRequest.setAttribute("book", BookLocalServiceUtil.getBook(bookId));
+					renderRequest.setAttribute("chapters", ChapterLocalServiceUtil.getChaptersByBookId(bookId));
+					
 				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			include(viewName, renderRequest, renderResponse);
+		}
+		else if(viewName.equals("/html/books/chapterDetail.jsp")){
 			include(viewName, renderRequest, renderResponse);
 		}
 		else{
@@ -117,6 +124,33 @@ public class BooksPortlet extends MVCPortlet {
 
 		BookLocalServiceUtil.updateBook(book);
 
+	}
+	
+	public void saveChapter(ActionRequest actionRequest, ActionResponse actionResponse) throws SystemException, PortalException {
+
+		ThemeDisplay themeDisplay = (ThemeDisplay) actionRequest.getAttribute(WebKeys.THEME_DISPLAY);
+
+		long bookId = ParamUtil.getLong(actionRequest, "bookId", 0);
+		
+		long chapterId = ParamUtil.getLong(actionRequest, "chapterId", 0);
+		
+		int numero = ParamUtil.getInteger(actionRequest, "numero", 0);
+		String nombre = ParamUtil.getString(actionRequest, "nombre");
+		
+		Chapter chapter = null;
+		if(chapterId==0){//nuevo chap
+			chapter = ChapterLocalServiceUtil.createChapter(CounterLocalServiceUtil.increment());
+			chapter.setBookId(bookId);
+		}
+		else{
+			chapter= ChapterLocalServiceUtil.getChapter(chapterId);
+		}
+		
+		chapter.setNumero(numero);
+		chapter.setNombre(nombre);
+		
+		ChapterLocalServiceUtil.updateChapter(chapter);
+		
 	}
 	
 	public void deleteBook(ActionRequest actionRequest, ActionResponse actionResponse) throws SystemException, PortalException {
