@@ -39,4 +39,29 @@
 			<finder-column name="groupId" />
 		</finder>
 	</entity>
+	
+	<entity name="Chapter" local-service="true" remote-service="true">
+
+		<!-- PK fields -->
+
+		<column name="chapterId" type="long" primary="true" />
+
+		<column name="numero" type="int" />
+		<column name="nombre" type="String" />
+		
+		<!-- FK fields -->
+		<column name="bookId" type="long" />
+		
+		<!-- Order -->
+
+		<order by="asc">
+			<order-column name="numero" />
+		</order>
+
+		<!-- Finder methods -->
+
+		<finder name="BookId" return-type="Collection">
+			<finder-column name="bookId" />
+		</finder>
+	</entity>
 </service-builder>

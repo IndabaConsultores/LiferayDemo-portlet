@@ -14,7 +14,7 @@
 
 package com.traintium.books.service.base;
 
-import com.traintium.books.service.BookLocalServiceUtil;
+import com.traintium.books.service.ChapterLocalServiceUtil;
 
 import java.util.Arrays;
 
@@ -22,23 +22,27 @@ import java.util.Arrays;
  * @author aritz
  * @generated
  */
-public class BookLocalServiceClpInvoker {
-	public BookLocalServiceClpInvoker() {
-		_methodName0 = "addBook";
+public class ChapterLocalServiceClpInvoker {
+	public ChapterLocalServiceClpInvoker() {
+		_methodName0 = "addChapter";
 
-		_methodParameterTypes0 = new String[] { "com.traintium.books.model.Book" };
+		_methodParameterTypes0 = new String[] {
+				"com.traintium.books.model.Chapter"
+			};
 
-		_methodName1 = "createBook";
+		_methodName1 = "createChapter";
 
 		_methodParameterTypes1 = new String[] { "long" };
 
-		_methodName2 = "deleteBook";
+		_methodName2 = "deleteChapter";
 
 		_methodParameterTypes2 = new String[] { "long" };
 
-		_methodName3 = "deleteBook";
+		_methodName3 = "deleteChapter";
 
-		_methodParameterTypes3 = new String[] { "com.traintium.books.model.Book" };
+		_methodParameterTypes3 = new String[] {
+				"com.traintium.books.model.Chapter"
+			};
 
 		_methodName4 = "dynamicQuery";
 
@@ -76,11 +80,11 @@ public class BookLocalServiceClpInvoker {
 				"com.liferay.portal.kernel.dao.orm.Projection"
 			};
 
-		_methodName10 = "fetchBook";
+		_methodName10 = "fetchChapter";
 
 		_methodParameterTypes10 = new String[] { "long" };
 
-		_methodName11 = "getBook";
+		_methodName11 = "getChapter";
 
 		_methodParameterTypes11 = new String[] { "long" };
 
@@ -88,17 +92,19 @@ public class BookLocalServiceClpInvoker {
 
 		_methodParameterTypes12 = new String[] { "java.io.Serializable" };
 
-		_methodName13 = "getBooks";
+		_methodName13 = "getChapters";
 
 		_methodParameterTypes13 = new String[] { "int", "int" };
 
-		_methodName14 = "getBooksCount";
+		_methodName14 = "getChaptersCount";
 
 		_methodParameterTypes14 = new String[] {  };
 
-		_methodName15 = "updateBook";
+		_methodName15 = "updateChapter";
 
-		_methodParameterTypes15 = new String[] { "com.traintium.books.model.Book" };
+		_methodParameterTypes15 = new String[] {
+				"com.traintium.books.model.Chapter"
+			};
 
 		_methodName40 = "getBeanIdentifier";
 
@@ -108,69 +114,53 @@ public class BookLocalServiceClpInvoker {
 
 		_methodParameterTypes41 = new String[] { "java.lang.String" };
 
-		_methodName46 = "getBooksByGroupId";
+		_methodName46 = "getChaptersByBookId";
 
-		_methodParameterTypes46 = new String[] { "long", "int", "int" };
-
-		_methodName47 = "countBooksByGroupId";
-
-		_methodParameterTypes47 = new String[] { "long" };
-
-		_methodName48 = "findBooksEntreAnios";
-
-		_methodParameterTypes48 = new String[] {
-				"long", "int", "int", "int", "int"
-			};
-
-		_methodName49 = "countBooksEntreAnios";
-
-		_methodParameterTypes49 = new String[] {
-				"long", "int", "int", "int", "int"
-			};
+		_methodParameterTypes46 = new String[] { "long" };
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
 		Object[] arguments) throws Throwable {
 		if (_methodName0.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes0, parameterTypes)) {
-			return BookLocalServiceUtil.addBook((com.traintium.books.model.Book)arguments[0]);
+			return ChapterLocalServiceUtil.addChapter((com.traintium.books.model.Chapter)arguments[0]);
 		}
 
 		if (_methodName1.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes1, parameterTypes)) {
-			return BookLocalServiceUtil.createBook(((Long)arguments[0]).longValue());
+			return ChapterLocalServiceUtil.createChapter(((Long)arguments[0]).longValue());
 		}
 
 		if (_methodName2.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes2, parameterTypes)) {
-			return BookLocalServiceUtil.deleteBook(((Long)arguments[0]).longValue());
+			return ChapterLocalServiceUtil.deleteChapter(((Long)arguments[0]).longValue());
 		}
 
 		if (_methodName3.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes3, parameterTypes)) {
-			return BookLocalServiceUtil.deleteBook((com.traintium.books.model.Book)arguments[0]);
+			return ChapterLocalServiceUtil.deleteChapter((com.traintium.books.model.Chapter)arguments[0]);
 		}
 
 		if (_methodName4.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes4, parameterTypes)) {
-			return BookLocalServiceUtil.dynamicQuery();
+			return ChapterLocalServiceUtil.dynamicQuery();
 		}
 
 		if (_methodName5.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes5, parameterTypes)) {
-			return BookLocalServiceUtil.dynamicQuery((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0]);
+			return ChapterLocalServiceUtil.dynamicQuery((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0]);
 		}
 
 		if (_methodName6.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes6, parameterTypes)) {
-			return BookLocalServiceUtil.dynamicQuery((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0],
+			return ChapterLocalServiceUtil.dynamicQuery((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0],
 				((Integer)arguments[1]).intValue(),
 				((Integer)arguments[2]).intValue());
 		}
 
 		if (_methodName7.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes7, parameterTypes)) {
-			return BookLocalServiceUtil.dynamicQuery((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0],
+			return ChapterLocalServiceUtil.dynamicQuery((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0],
 				((Integer)arguments[1]).intValue(),
 				((Integer)arguments[2]).intValue(),
 				(com.liferay.portal.kernel.util.OrderByComparator)arguments[3]);
@@ -178,86 +168,61 @@ public class BookLocalServiceClpInvoker {
 
 		if (_methodName8.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes8, parameterTypes)) {
-			return BookLocalServiceUtil.dynamicQueryCount((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0]);
+			return ChapterLocalServiceUtil.dynamicQueryCount((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0]);
 		}
 
 		if (_methodName9.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes9, parameterTypes)) {
-			return BookLocalServiceUtil.dynamicQueryCount((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0],
+			return ChapterLocalServiceUtil.dynamicQueryCount((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0],
 				(com.liferay.portal.kernel.dao.orm.Projection)arguments[1]);
 		}
 
 		if (_methodName10.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes10, parameterTypes)) {
-			return BookLocalServiceUtil.fetchBook(((Long)arguments[0]).longValue());
+			return ChapterLocalServiceUtil.fetchChapter(((Long)arguments[0]).longValue());
 		}
 
 		if (_methodName11.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes11, parameterTypes)) {
-			return BookLocalServiceUtil.getBook(((Long)arguments[0]).longValue());
+			return ChapterLocalServiceUtil.getChapter(((Long)arguments[0]).longValue());
 		}
 
 		if (_methodName12.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes12, parameterTypes)) {
-			return BookLocalServiceUtil.getPersistedModel((java.io.Serializable)arguments[0]);
+			return ChapterLocalServiceUtil.getPersistedModel((java.io.Serializable)arguments[0]);
 		}
 
 		if (_methodName13.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes13, parameterTypes)) {
-			return BookLocalServiceUtil.getBooks(((Integer)arguments[0]).intValue(),
+			return ChapterLocalServiceUtil.getChapters(((Integer)arguments[0]).intValue(),
 				((Integer)arguments[1]).intValue());
 		}
 
 		if (_methodName14.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes14, parameterTypes)) {
-			return BookLocalServiceUtil.getBooksCount();
+			return ChapterLocalServiceUtil.getChaptersCount();
 		}
 
 		if (_methodName15.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes15, parameterTypes)) {
-			return BookLocalServiceUtil.updateBook((com.traintium.books.model.Book)arguments[0]);
+			return ChapterLocalServiceUtil.updateChapter((com.traintium.books.model.Chapter)arguments[0]);
 		}
 
 		if (_methodName40.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes40, parameterTypes)) {
-			return BookLocalServiceUtil.getBeanIdentifier();
+			return ChapterLocalServiceUtil.getBeanIdentifier();
 		}
 
 		if (_methodName41.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes41, parameterTypes)) {
-			BookLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
+			ChapterLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
 		}
 
 		if (_methodName46.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes46, parameterTypes)) {
-			return BookLocalServiceUtil.getBooksByGroupId(((Long)arguments[0]).longValue(),
-				((Integer)arguments[1]).intValue(),
-				((Integer)arguments[2]).intValue());
-		}
-
-		if (_methodName47.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes47, parameterTypes)) {
-			return BookLocalServiceUtil.countBooksByGroupId(((Long)arguments[0]).longValue());
-		}
-
-		if (_methodName48.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes48, parameterTypes)) {
-			return BookLocalServiceUtil.findBooksEntreAnios(((Long)arguments[0]).longValue(),
-				((Integer)arguments[1]).intValue(),
-				((Integer)arguments[2]).intValue(),
-				((Integer)arguments[3]).intValue(),
-				((Integer)arguments[4]).intValue());
-		}
-
-		if (_methodName49.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes49, parameterTypes)) {
-			return BookLocalServiceUtil.countBooksEntreAnios(((Long)arguments[0]).longValue(),
-				((Integer)arguments[1]).intValue(),
-				((Integer)arguments[2]).intValue(),
-				((Integer)arguments[3]).intValue(),
-				((Integer)arguments[4]).intValue());
+			return ChapterLocalServiceUtil.getChaptersByBookId(((Long)arguments[0]).longValue());
 		}
 
 		throw new UnsupportedOperationException();
@@ -301,10 +266,4 @@ public class BookLocalServiceClpInvoker {
 	private String[] _methodParameterTypes41;
 	private String _methodName46;
 	private String[] _methodParameterTypes46;
-	private String _methodName47;
-	private String[] _methodParameterTypes47;
-	private String _methodName48;
-	private String[] _methodParameterTypes48;
-	private String _methodName49;
-	private String[] _methodParameterTypes49;
 }

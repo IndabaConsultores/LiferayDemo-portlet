@@ -3,6 +3,7 @@
 
 <hibernate-mapping default-lazy="false" auto-import="false">
 	<import class="com.traintium.books.model.Book" />
+	<import class="com.traintium.books.model.Chapter" />
 	<class name="com.traintium.books.model.impl.BookImpl" table="book_Book">
 		<cache usage="read-write" />
 		<id name="bookId" type="long">
@@ -16,5 +17,14 @@
 		<property name="nombre" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="autor" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="anio" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+	</class>
+	<class name="com.traintium.books.model.impl.ChapterImpl" table="book_Chapter">
+		<cache usage="read-write" />
+		<id name="chapterId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="numero" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="nombre" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="bookId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 	</class>
 </hibernate-mapping>

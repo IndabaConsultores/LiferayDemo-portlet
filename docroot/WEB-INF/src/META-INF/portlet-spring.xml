@@ -4,4 +4,7 @@
 	<bean id="com.traintium.books.service.BookLocalService" class="com.traintium.books.service.impl.BookLocalServiceImpl" />
 	<bean id="com.traintium.books.service.BookService" class="com.traintium.books.service.impl.BookServiceImpl" />
 	<bean id="com.traintium.books.service.persistence.BookPersistence" class="com.traintium.books.service.persistence.BookPersistenceImpl" parent="basePersistence" />
+	<bean id="com.traintium.books.service.ChapterLocalService" class="com.traintium.books.service.impl.ChapterLocalServiceImpl" />
+	<bean id="com.traintium.books.service.ChapterService" class="com.traintium.books.service.impl.ChapterServiceImpl" />
+	<bean id="com.traintium.books.service.persistence.ChapterPersistence" class="com.traintium.books.service.persistence.ChapterPersistenceImpl" parent="basePersistence" />
 </beans>

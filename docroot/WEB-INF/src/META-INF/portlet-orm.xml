@@ -28,8 +28,23 @@
 			<transient name="userUuid" />
 		</attributes>
 	</mapped-superclass>
+	<mapped-superclass class="com.traintium.books.model.impl.ChapterModelImpl">
+		<attributes>
+			<id name="chapterId" />
+			<basic name="numero" />
+			<basic name="nombre" />
+			<basic name="bookId" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
 	<entity class="com.traintium.books.model.impl.BookImpl" name="Book">
 		<table name="book_Book" />
+		<attributes />
+	</entity>
+	<entity class="com.traintium.books.model.impl.ChapterImpl" name="Chapter">
+		<table name="book_Chapter" />
 		<attributes />
 	</entity>
 </entity-mappings>

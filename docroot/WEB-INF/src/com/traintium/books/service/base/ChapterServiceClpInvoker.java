@@ -14,7 +14,7 @@
 
 package com.traintium.books.service.base;
 
-import com.traintium.books.service.BookServiceUtil;
+import com.traintium.books.service.ChapterServiceUtil;
 
 import java.util.Arrays;
 
@@ -22,8 +22,8 @@ import java.util.Arrays;
  * @author aritz
  * @generated
  */
-public class BookServiceClpInvoker {
-	public BookServiceClpInvoker() {
+public class ChapterServiceClpInvoker {
+	public ChapterServiceClpInvoker() {
 		_methodName24 = "getBeanIdentifier";
 
 		_methodParameterTypes24 = new String[] {  };
@@ -37,12 +37,12 @@ public class BookServiceClpInvoker {
 		Object[] arguments) throws Throwable {
 		if (_methodName24.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes24, parameterTypes)) {
-			return BookServiceUtil.getBeanIdentifier();
+			return ChapterServiceUtil.getBeanIdentifier();
 		}
 
 		if (_methodName25.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes25, parameterTypes)) {
-			BookServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
+			ChapterServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
 		}

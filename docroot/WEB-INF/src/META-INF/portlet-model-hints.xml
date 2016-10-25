@@ -12,4 +12,10 @@
 		<field name="autor" type="String" />
 		<field name="anio" type="int" />
 	</model>
+	<model name="com.traintium.books.model.Chapter">
+		<field name="chapterId" type="long" />
+		<field name="numero" type="int" />
+		<field name="nombre" type="String" />
+		<field name="bookId" type="long" />
+	</model>
 </model-hints>
