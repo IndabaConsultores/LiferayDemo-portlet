@@ -9,6 +9,8 @@ import javax.portlet.ActionResponse;
 import javax.portlet.PortletException;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
+import javax.portlet.ResourceRequest;
+import javax.portlet.ResourceResponse;
 
 import org.apache.commons.lang.StringUtils;
 
@@ -164,6 +166,19 @@ public class BooksPortlet extends MVCPortlet {
 		}
 	}
 	
+	
+	public void serveResource(ResourceRequest resourceRequest, ResourceResponse resourceResponse) throws IOException ,PortletException {
+		long bookId = ParamUtil.getLong(resourceRequest, "bookId");
+		Book book;
+		try {
+			book = BookLocalServiceUtil.getBook(bookId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return;
+		} 
+		resourceRequest.setAttribute("book", book);
+		include("/html/books/detailView.jsp", resourceRequest, resourceResponse);
+	}
 	
 
 	Log _log = LogFactoryUtil.getLog(this.getClass());

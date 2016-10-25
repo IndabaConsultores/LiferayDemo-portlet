@@ -33,8 +33,12 @@ int delta = (Integer)ParamUtil.getInteger(renderRequest, "delta", com.traintium.
 			modelVar="book">
 			
 			<liferay-ui:search-container-column-text
-				name="name"
-				value="<%= book.getNombre() %>"/>
+				name="name">
+				<portlet:resourceURL var="detailResurceURL">
+					<portlet:param name="bookId" value="<%=String.valueOf(book.getBookId()) %>"/>
+				</portlet:resourceURL>
+				<aui:a href='<%="javascript:openDiv(\'" + book.getNombre() + "\', \'" + detailResurceURL + "\')"%>' label="<%=book.getNombre()%>"></aui:a>
+			</liferay-ui:search-container-column-text>
 			<liferay-ui:search-container-column-text
 				name="autor"
 				value="<%= book.getAutor() %>"/>
@@ -59,3 +63,42 @@ int delta = (Integer)ParamUtil.getInteger(renderRequest, "delta", com.traintium.
 <aui:button-row>
 	<aui:button type="submit" href="<%=detailURL%>" value="add"></aui:button>
 </aui:button-row>
+
+<script>
+    
+      function openDiv(title, url){
+      AUI().use('aui-base',
+        'aui-io-plugin-deprecated',
+        'liferay-util-window',
+        function(A) {
+          var popUpWindow=Liferay.Util.Window.getWindow(
+            {
+              dialog: {
+                centered: true,
+                constrain2view: true,
+                //cssClass: 'yourCSSclassName',
+                modal: true,
+                resizable: false,
+                width: 475,
+                bodyContent:''
+              }
+            }
+          ).plug(A.Plugin.DialogIframe,
+                  {
+              autoLoad: true,
+              iframeCssClass: 'dialog-iframe',
+              uri:url
+              }).render();
+          
+          popUpWindow.show();
+          popUpWindow.titleNode.html(title);
+    
+        }
+      );
+    
+    
+    
+    
+        
+      }
+      </script>
