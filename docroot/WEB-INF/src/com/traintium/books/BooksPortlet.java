@@ -126,7 +126,7 @@ public class BooksPortlet extends MVCPortlet {
 
 	}
 	
-	public void saveChapter(ActionRequest actionRequest, ActionResponse actionResponse) throws SystemException, PortalException {
+	public void saveChapter(ActionRequest actionRequest, ActionResponse actionResponse) throws SystemException, PortalException, IOException {
 
 		ThemeDisplay themeDisplay = (ThemeDisplay) actionRequest.getAttribute(WebKeys.THEME_DISPLAY);
 
@@ -150,6 +150,8 @@ public class BooksPortlet extends MVCPortlet {
 		chapter.setNombre(nombre);
 		
 		ChapterLocalServiceUtil.updateChapter(chapter);
+		
+		sendRedirect(actionRequest, actionResponse);
 		
 	}
 	

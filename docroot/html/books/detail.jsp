@@ -25,7 +25,11 @@ List<Chapter> chapters = (List<Chapter>)renderRequest.getAttribute("chapters");
 	
 	<aui:button-row>
 		<aui:button type="submit"></aui:button>
+		
+		<portlet:renderURL var="beginURL"/>	
+		<aui:button type="button" href="<%=beginURL%>" value="back"></aui:button>
 	</aui:button-row>
+	
 </aui:form>
 
 <%if(book.getBookId()!=0){%>
@@ -58,8 +62,10 @@ List<Chapter> chapters = (List<Chapter>)renderRequest.getAttribute("chapters");
 <portlet:renderURL var="chapDetailURL">
 	<portlet:param name="viewName" value="/html/books/chapterDetail.jsp"/>
 	<portlet:param name="bookId" value="<%=String.valueOf(book.getBookId()) %>"/>
+	<portlet:param name="backURL" value="<%=currentURL %>"/>
 </portlet:renderURL>
 <aui:button-row>
 	<aui:button type="submit" href="<%=chapDetailURL%>" value="add chapter"></aui:button>
 </aui:button-row>
+
 <%}%>
