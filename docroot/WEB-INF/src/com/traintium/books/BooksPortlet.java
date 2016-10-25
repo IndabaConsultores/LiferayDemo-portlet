@@ -53,9 +53,11 @@ public class BooksPortlet extends MVCPortlet {
 		else{
 			int cur = ParamUtil.getInteger(renderRequest, "cur", 1);
 			int delta = ParamUtil.getInteger(renderRequest, "delta", Constants.DEFAULT_DELTA);
+			int anioMin = ParamUtil.getInteger(renderRequest, "yearFrom", -1);
+			int anioMax = ParamUtil.getInteger(renderRequest, "yearTo", -1);
 	
 			try {
-				List<Book> books = BookLocalServiceUtil.getBooksByGroupId(themeDisplay.getScopeGroupId(), (cur - 1) * delta,
+				List<Book> books = BookLocalServiceUtil.findBooksEntreAnios(themeDisplay.getScopeGroupId(), anioMin, anioMax, (cur - 1) * delta,
 						cur * delta);
 				renderRequest.setAttribute("books", books);
 				renderRequest.setAttribute("booksCount",

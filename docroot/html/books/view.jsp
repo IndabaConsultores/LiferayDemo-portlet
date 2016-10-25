@@ -1,5 +1,22 @@
 <%@include file="/html/init.jsp" %>
 
+<liferay-portlet:renderURL var="searchURL"></liferay-portlet:renderURL>
+<aui:form action="<%=searchURL%>" method="POST">
+	<aui:fieldset>
+		<aui:input name="yearFrom">
+			<aui:validator name="number"></aui:validator>
+		</aui:input>
+		<aui:input name="yearTo">
+			<aui:validator name="number"></aui:validator>
+		</aui:input>
+		
+	</aui:fieldset>
+	
+	<aui:button-row>
+		<aui:button type="submit"></aui:button>
+	</aui:button-row>
+</aui:form>
+
 <%
 List<Book> books = (List<Book>)renderRequest.getAttribute("books");
 Long booksCount = (Long)renderRequest.getAttribute("booksCount");

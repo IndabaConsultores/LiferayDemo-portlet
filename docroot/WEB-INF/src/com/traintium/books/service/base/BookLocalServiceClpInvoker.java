@@ -115,6 +115,18 @@ public class BookLocalServiceClpInvoker {
 		_methodName41 = "countBooksByGroupId";
 
 		_methodParameterTypes41 = new String[] { "long" };
+
+		_methodName42 = "findBooksEntreAnios";
+
+		_methodParameterTypes42 = new String[] {
+				"long", "int", "int", "int", "int"
+			};
+
+		_methodName43 = "countBooksEntreAnios";
+
+		_methodParameterTypes43 = new String[] {
+				"long", "int", "int", "int", "int"
+			};
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -230,6 +242,24 @@ public class BookLocalServiceClpInvoker {
 			return BookLocalServiceUtil.countBooksByGroupId(((Long)arguments[0]).longValue());
 		}
 
+		if (_methodName42.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes42, parameterTypes)) {
+			return BookLocalServiceUtil.findBooksEntreAnios(((Long)arguments[0]).longValue(),
+				((Integer)arguments[1]).intValue(),
+				((Integer)arguments[2]).intValue(),
+				((Integer)arguments[3]).intValue(),
+				((Integer)arguments[4]).intValue());
+		}
+
+		if (_methodName43.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes43, parameterTypes)) {
+			return BookLocalServiceUtil.countBooksEntreAnios(((Long)arguments[0]).longValue(),
+				((Integer)arguments[1]).intValue(),
+				((Integer)arguments[2]).intValue(),
+				((Integer)arguments[3]).intValue(),
+				((Integer)arguments[4]).intValue());
+		}
+
 		throw new UnsupportedOperationException();
 	}
 
@@ -273,4 +303,8 @@ public class BookLocalServiceClpInvoker {
 	private String[] _methodParameterTypes40;
 	private String _methodName41;
 	private String[] _methodParameterTypes41;
+	private String _methodName42;
+	private String[] _methodParameterTypes42;
+	private String _methodName43;
+	private String[] _methodParameterTypes43;
 }

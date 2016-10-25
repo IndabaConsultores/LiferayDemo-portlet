@@ -16,6 +16,9 @@ package com.traintium.books.service.impl;
 
 import java.util.List;
 
+import com.liferay.portal.kernel.dao.orm.DynamicQuery;
+import com.liferay.portal.kernel.dao.orm.DynamicQueryFactoryUtil;
+import com.liferay.portal.kernel.dao.orm.RestrictionsFactoryUtil;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.traintium.books.model.Book;
 import com.traintium.books.service.base.BookLocalServiceBaseImpl;
@@ -46,5 +49,29 @@ public class BookLocalServiceImpl extends BookLocalServiceBaseImpl {
 	
 	public long countBooksByGroupId(long groupId) throws SystemException{
 		return bookPersistence.countByGroupId(groupId);
+	}
+	
+	public List<Book> findBooksEntreAnios(long groupId, int anioMin, int anioMax, int start, int end) throws SystemException{
+		DynamicQuery bookQuery = DynamicQueryFactoryUtil.forClass(Book.class);
+		if(anioMin!=-1)
+			bookQuery.add(RestrictionsFactoryUtil.ge("anio", anioMin));
+		if(anioMax!=-1)
+			bookQuery.add(RestrictionsFactoryUtil.le("anio", anioMax));
+		
+		bookQuery.add(RestrictionsFactoryUtil.eq("groupId", groupId));
+		
+		return bookPersistence.findWithDynamicQuery(bookQuery , start, end );
+	}
+	
+	public long countBooksEntreAnios(long groupId, int anioMin, int anioMax, int start, int end) throws SystemException{
+		DynamicQuery bookQuery = DynamicQueryFactoryUtil.forClass(Book.class);
+		if(anioMin!=-1)
+			bookQuery.add(RestrictionsFactoryUtil.ge("anio", anioMin));
+		if(anioMax!=-1)
+			bookQuery.add(RestrictionsFactoryUtil.le("anio", anioMax));
+		
+		bookQuery.add(RestrictionsFactoryUtil.eq("groupId", groupId));
+		
+		return bookPersistence.countWithDynamicQuery(bookQuery);
 	}
 }
